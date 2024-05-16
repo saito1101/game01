@@ -21,19 +21,19 @@ def gudge(num, symbol):
     global record
     global result
     record[num] = symbol
-
+    
     if (record[0] == record[1] == record[2] == symbol)or\
         (record[3] == record[4] == record[5] == symbol)or\
         (record[6] == record[7] == record[8] == symbol):
             result = tk.Label(window, text=symbol+"の勝利!", font=("MS Gothic", 50))
             return result.place(x=580, y=150)
- 
+    
     if (record[0] == record[3] == record[6] == symbol)or\
         (record[1] == record[4] == record[7] == symbol)or\
         (record[2] == record[5] == record[8] == symbol):
             result = tk.Label(window, text=symbol+"の勝利!", font=("MS Gothic", 50))
             return result.place(x=580, y=150)
- 
+    
     if (record[0] == record[4] == record[8] == symbol)or\
         (record[2] == record[4] == record[6] == symbol):
             result = tk.Label(window, text=symbol+"の勝利!", font=("MS Gothic", 50))
@@ -55,14 +55,13 @@ def clk(event):
             ox = "〇"
         else:
             ox = "×"
-
+        
         event.widget.configure(relief="solid", bd=1)
         eventlabel.append(tk.Label(event.widget, text=ox, font=("MS Gothic", 100)))
         eventlabel[t].place(width=150, height=150)
-        print(eventlabel)
         
-        print(gudge(event.widget.num, ox))
-
+        gudge(event.widget.num, ox)
+        
         if t == 8:
             if result == "":
                 result = tk.Label(window, text="引き分け!", font=("MS Gothic", 50))
